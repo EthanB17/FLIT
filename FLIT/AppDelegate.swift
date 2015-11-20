@@ -7,15 +7,29 @@
 //
 
 import UIKit
+import Parse
+import Bolts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let parseAppID = "shtRiDbjABkbAsqjfzoMHepfiBd75Qs2a2b0PsAx"
+    let parseClientKey = "oJFK9EoIFNNbwzYfddcsLNToZTQAQ9MiqMBMOR7P"
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //enable parse datastore
+        Parse.enableLocalDatastore()
+        
+        //initialize parse
+        Parse.setApplicationId(parseAppID, clientKey: parseClientKey)
+        
+        //track statistics
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
         return true
     }
 
